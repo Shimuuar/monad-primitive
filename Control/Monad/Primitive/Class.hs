@@ -1,5 +1,13 @@
 {-# LANGUAGE TypeFamilies     #-}
 {-# LANGUAGE FlexibleContexts #-}
+-- |
+-- Module    : Control.Monad.Primitive.Class
+-- Copyright : (c) 2013 Aleksey Khudyakov
+-- License   : BSD3
+--
+-- Maintainer  : alexey.skladnoy@gmail.com
+-- Stability   : experimental
+-- Portability : non-portable
 module Control.Monad.Primitive.Class (
     MonadPrim(..)
   ) where

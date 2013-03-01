@@ -1,7 +1,16 @@
 {-# LANGUAGE MagicHash #-}
 {-# LANGUAGE UnboxedTuples #-}
 {-# LANGUAGE NoImplicitPrelude #-}
--- | Mutable references in moads which are instances of 'MonadPrim'.
+-- |
+-- Module    : Data.PrimRef
+-- Copyright : (c) 2013 Aleksey Khudyakov
+-- License   : BSD3
+--
+-- Maintainer  : alexey.skladnoy@gmail.com
+-- Stability   : experimental
+-- Portability : portable
+--
+-- Mutable references in monads which are instances of 'MonadPrim'.
 module Data.PrimRef (
     -- * PrimRefs
     PrimRef
