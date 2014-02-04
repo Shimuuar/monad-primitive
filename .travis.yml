@@ -13,6 +13,7 @@ env:
  - GHCVER=7.6.1
  - GHCVER=7.6.2
  - GHCVER=7.6.3
+ - GHCVER=7.8.1
  - GHCVER=head
 
 matrix:
@@ -28,20 +29,20 @@ before_install:
 
 install:
  - cabal-1.18 update
- - cabal-1.18 install --only-dependencies
+ - cabal-1.18 install --enable-tests --only-dependencies
  - ghc --version
 
 # Here starts the actual work to be performed for the package under test; any
 # command which exits with a non-zero exit code causes the build to fail.
 script:
- - cabal-1.18 configure -v2  # -v2 provides useful information for debugging
+ - cabal-1.18 configure --enable-tests -v2  # -v2 provides useful information for debugging
  - cabal-1.18 build
  - cabal-1.18 test
- - cabal-1.18 check
+# - cabal-1.18 check
 # tests that a source-distribution can be generated
  - cabal-1.18 sdist
 # The following scriptlet checks that the resulting source distribution can be built & installed
- - export SRC_TGZ=$(cabal-1.18 info . | awk '{print $2 ".tar.gz";exit}') ;
+ - SRC_TGZ=$(cabal-1.18 info . | awk '{print $2 ".tar.gz";exit}') ;
    cd dist/;
    if [ -f "$SRC_TGZ" ]; then
       cabal-1.18 install "$SRC_TGZ";
